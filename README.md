@@ -1,5 +1,4 @@
 # embeddings-fix
-
 ## Features
 
 - Diagnose memory search issues
