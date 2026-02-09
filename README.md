@@ -1,29 +1,30 @@
-# embeddings-fix Skill
+# embeddings-fix
 
-## 描述
-本地 Embeddings 記憶搜索修復 Skill - 用於修復和配置 OpenClaw 的本地 embeddings 智能搜索功能。
+Auto-generate comprehensive README.md files by analyzing project structure and configuration.
 
-## 功能
-- 診斷記憶搜索問題
-- 配置本地 embeddings 模型
-- 修復索引問題
-- 測試搜索功能
+## Features
 
-## 安裝方法
+- Diagnose memory search issues
+- Configure local embeddings model
+- Fix index problems
+- Test search functionality
+
+## Installation
+
 ```bash
-# 1. 克隆倉庫
-git clone https://github.com/jiulingyun/openclaw-embeddings-fix.git ~/.openclaw/workspace/skills/embeddings-fix
+# Clone repository
+git clone https://github.com/18gogogo/openclaw-embeddings-fix.git ~/.openclaw/workspace/skills/embeddings-fix
 
-# 2. 創建符號鏈接
+# Create symlink
 ln -sf ~/.openclaw/workspace/skills/embeddings-fix ~/.openclaw/skills/embeddings-fix
 
-# 3. 重啟 OpenClaw（可選）
+# Restart OpenClaw (optional)
 openclaw reset
 ```
 
-## 使用方法
+## Usage
 
-### 使用工具
+### Tool Usage
 ```json
 {
   "tool": "embeddings_fix",
@@ -33,20 +34,21 @@ openclaw reset
 }
 ```
 
-### 使用腳本
+### Script Usage
 ```bash
-# 診斷
+# Diagnose
 bash ~/.openclaw/skills/embeddings-fix/scripts/fix.sh diagnose
 
-# 修復
+# Fix
 bash ~/.openclaw/skills/embeddings-fix/scripts/fix.sh fix
 
-# 重新索引
+# Reindex
 bash ~/.openclaw/skills/embeddings-fix/scripts/fix.sh reindex
 ```
 
-## 配置
-需要確保 ~/.openclaw/openclaw.json 包含以下配置：
+## Configuration
+
+Ensure `~/.openclaw/openclaw.json` contains:
 
 ```json
 {
@@ -65,19 +67,38 @@ bash ~/.openclaw/skills/embeddings-fix/scripts/fix.sh reindex
 }
 ```
 
-## 模型
-- 名稱: embeddinggemma-300M-Q8_0.gguf
-- 大小: 314 MB
-- 維度: 768
-- 自動下載: 是（首次使用時）
+## Model Information
 
-## 相容性
+| Property | Value |
+|----------|-------|
+| Name | embeddinggemma-300M-Q8_0.gguf |
+| Size | 314 MB |
+| Dimensions | 768 |
+| Auto-download | Yes (first use) |
+
+## Use Cases
+
+- Memory search returns empty results
+- Enable local embeddings (no OpenAI API key required)
+- Index corruption needing reindex
+- Migration or upgrade requiring reconfiguration
+
+## Prerequisites
+
+- OpenClaw installed
+- Node.js environment
+- Network connection (for model download)
+
+## Compatibility
+
 - OpenClaw 2026.2.3+
-- Qwen 2.5 系列模型
+- Qwen 2.5 series models
 - Ubuntu 24.04 (N100)
 
-## 作者
+## Author
+
 OpenClaw System
 
-## 許可證
+## License
+
 MIT
