@@ -1,0 +1,151 @@
+{
+  "id": "embeddings-fix",
+  "name": "本地 Embeddings 記憶搜索修復",
+  "version": "1.0.0",
+  "description": "修復和配置 OpenClaw 本地 embeddings 智能搜索功能",
+  "author": "OpenClaw System",
+  "tags": ["memory", "embeddings", "fix", "search", "local"],
+  "capabilities": [
+    "memory",
+    "search",
+    "configuration"
+  ],
+  "conditions": {
+    "env": {},
+    "models": {
+      "allow": [],
+      "require": []
+    }
+  },
+  "tools": [
+    {
+      "name": "embeddings_fix",
+      "description": "修復和配置本地 embeddings 智能搜索功能",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": ["diagnose", "fix", "reindex", "test"],
+            "description": "執行動作：診斷、修復、重新索引或測試"
+          },
+          "query": {
+            "type": "string",
+            "description": "可選的搜索詞，用於測試搜索功能"
+          }
+        },
+        "required": ["action"]
+      }
+    }
+  ],
+  "scripts": [
+    {
+      "name": "fix",
+      "path": "scripts/fix.sh",
+      "description": "自動修復本地 embeddings 配置"
+    }
+  ],
+  "config": {
+    "type": "object",
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "default": true,
+        "description": "是否啟用此 Skill"
+      },
+      "autoFix": {
+        "type": "boolean",
+        "default": false,
+        "description": "是否自動修復問題"
+      },
+      "modelPath": {
+        "type": "string",
+        "default": "hf:ggml-org/embeddinggemma-300M-GGUF/embeddinggemma-300M-Q8_0.gguf",
+        "description": "本地 embeddings 模型路徑"
+      },
+      "cacheDir": {
+        "type": "string",
+        "default": "~/.openclaw/models",
+        "description": "模型緩存目錄"
+      },
+      "memoryDir": {
+        "type": "string",
+        "default": "~/.openclaw/workspace/memory",
+        "description": "記憶文件目錄"
+      }
+    }
+  },
+  "compatibility": {
+    "openclaw": ">=2026.2.3",
+    "models": [
+      "qwen2.5:14b-instruct-q8_0-ctx131072",
+      "qwen2.5:32b-instruct-q4_1-ctx64k",
+      "qwen-coder-64k:latest",
+      "nvidia-minimax/minimaxai/minimax-m2.1",
+      "nvidia-glm/z-ai/glm4.7"
+    ]
+  },
+  "permissions": {
+    "read": [
+      "~/.openclaw/openclaw.json",
+      "~/.openclaw/memory/",
+      "~/.openclaw/workspace/memory/"
+    ],
+    "write": [
+      "~/.openclaw/workspace/memory/",
+      "~/.openclaw/models/embeddings/"
+    ],
+    "execute": [
+      "openclaw memory index",
+      "openclaw memory status",
+      "openclaw memory search"
+    ]
+  },
+  "ui": {
+    "name": {
+      "en": "Embeddings Fix",
+      "zh": "Embeddings 修復"
+    },
+    "description": {
+      "en": "Fix and configure local embeddings for memory search",
+      "zh": "修復和配置本地 embeddings 智能搜索功能"
+    },
+    "icon": "memory"
+  },
+  "examples": [
+    {
+      "description": "診斷當前狀態",
+      "tool": "embeddings_fix",
+      "arguments": {
+        "action": "diagnose"
+      }
+    },
+    {
+      "description": "執行自動修復",
+      "tool": "embeddings_fix",
+      "arguments": {
+        "action": "fix"
+      }
+    },
+    {
+      "description": "重新索引所有記憶",
+      "tool": "embeddings_fix",
+      "arguments": {
+        "action": "reindex"
+      }
+    },
+    {
+      "description": "測試搜索功能",
+      "tool": "embeddings_fix",
+      "arguments": {
+        "action": "test",
+        "query": "測試"
+      }
+    }
+  ],
+  "documentation": {
+    "readme": "SKILL.md",
+    "memory": "memory-embeddings-fix.md",
+    "changelog": []
+  }
+}

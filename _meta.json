@@ -1,0 +1,14 @@
+{
+  "id": "embeddings-fix",
+  "name": "本地 Embeddings 記憶搜索修復",
+  "version": "1.0.0",
+  "installedAt": "2026-02-09T20:09:00.000Z",
+  "source": "local",
+  "path": "~/.openclaw/skills/embeddings-fix",
+  "manifest": "skill.json",
+  "meta": {
+    "author": "OpenClaw System",
+    "tags": ["memory", "embeddings", "fix", "search", "local"],
+    "compatibility": ">=2026.2.3"
+  }
+}
