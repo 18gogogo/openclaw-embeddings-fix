@@ -1,7 +1,5 @@
 # embeddings-fix
 
-Auto-generate comprehensive README.md files by analyzing project structure and configuration.
-
 ## Features
 
 - Diagnose memory search issues
